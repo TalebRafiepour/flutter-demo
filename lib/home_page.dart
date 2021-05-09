@@ -8,6 +8,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int counter = 0;
+  late final TextEditingController _textController;
+
+  @override
+  void initState() {
+    _textController = TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +29,9 @@ class _HomePageState extends State<HomePage> {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                    context, MaterialPageRoute(builder: (ctx) => SecondPage()));
+                String input = _textController.text;
+
+                Navigator.pushNamed(context, 'second',arguments: [input,12,'sdfds']);
               },
               child: Container(
                 decoration: BoxDecoration(
@@ -33,6 +41,15 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Text('counter : $counter'),
+            SizedBox(
+              height: 50,
+            ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.5,
+              child: TextField(
+                controller: _textController,
+              ),
+            ),
           ],
         ),
       ),
