@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/second_page.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -31,7 +30,8 @@ class _HomePageState extends State<HomePage> {
               onPressed: () {
                 String input = _textController.text;
 
-                Navigator.pushNamed(context, 'second',arguments: [input,12,'sdfds']);
+                Navigator.pushNamed(context, 'second',
+                    arguments: [input, 12, 'sdfds']);
               },
               child: Container(
                 decoration: BoxDecoration(

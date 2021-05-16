@@ -20,7 +20,10 @@ class MyApp extends StatelessWidget {
 Route onGenerateRoute(RouteSettings? routeSettings) {
   if (routeSettings!.name == 'second') {
     String input = (routeSettings.arguments as List<Object>).join('-');
-    return MaterialPageRoute(builder: (ctx) => SecondPage(input: input,));
+    return MaterialPageRoute(
+        builder: (ctx) => SecondPage(
+              input: input,
+            ));
   } else {
     return MaterialPageRoute(
         builder: (ctx) => Center(
