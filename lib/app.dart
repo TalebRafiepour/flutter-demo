@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/second_page.dart';
+import 'package:flutter_app/user_provider.dart';
+import 'package:provider/provider.dart';
 
 import 'home_page.dart';
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      onGenerateRoute: onGenerateRoute,
-      theme: ThemeData(
-        primaryColor: Colors.green,
-        elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle()),
+    return ChangeNotifierProvider<UserProvider>(
+      create: (_) => UserProvider(),
+      child: MaterialApp(
+        onGenerateRoute: onGenerateRoute,
+        theme: ThemeData(
+          primaryColor: Colors.green,
+          elevatedButtonTheme: ElevatedButtonThemeData(style: ButtonStyle()),
+        ),
+        home: HomePage(),
       ),
-      home: HomePage(),
     );
   }
 }

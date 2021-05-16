@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/user_provider.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,9 +19,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var userProvider = context.watch<UserProvider>();
     return Scaffold(
       appBar: AppBar(
-        title: Text('App Bar'),
+        title: Text('Count : ${userProvider.count}'),
       ),
       body: Center(
         child: Column(
@@ -58,6 +61,7 @@ class _HomePageState extends State<HomePage> {
         onPressed: () {
           setState(() {
             counter++;
+            context.read<UserProvider>().increment();
           });
         },
         child: Text('Fab'),

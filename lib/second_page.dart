@@ -2,7 +2,9 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/post_model.dart';
+import 'package:flutter_app/user_provider.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class SecondPage extends StatelessWidget {
   String? input;
@@ -11,7 +13,17 @@ class SecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var userProvider = context.watch<UserProvider>();
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          userProvider.increment();
+        },
+        child: Icon(Icons.add),
+      ),
+      appBar: AppBar(
+        title: Text('count: ${userProvider.count.toString()}'),
+      ),
       body: Center(
         child: FutureBuilder<List<PostModel>>(
           future: getData(),
